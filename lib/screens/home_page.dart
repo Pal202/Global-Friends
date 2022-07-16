@@ -15,12 +15,23 @@ class _HomeState extends State<Home> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            "Global Friends",
-            style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-                color: Color.fromARGB(255, 45, 74, 238)),
+          Row(
+            children: [
+              Image.asset(
+                'assets/gf.png',
+                width: 30,
+                height: 30,
+              ),
+              const Flexible(
+                child: Text(
+                  "Global Friends",
+                  style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Color.fromARGB(255, 45, 74, 238)),
+                ),
+              ),
+            ],
           ),
           Container(
             height: 60,
@@ -63,105 +74,46 @@ class _HomeState extends State<Home> {
               ],
             ),
           ),
-          const Divider(
-            height: 3,
-          ),
+          // const Divider(
+          //   height: 3,
+          // ),
           Expanded(
             child: ListView(
+              padding: EdgeInsets.zero,
               children: [
-                buildPost(
-                    context,
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz1TtMqcjKZdQyZEgc3dsoH1BEqCnDz63bFg&usqp=CAU',
-                    'Ashley Greene',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMFqC4BS9HIFU_4bAOPFRlZhNnWmJviYIBxg&usqp=CAU'),
-                buildPost(
-                    context,
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1vyjb4h0JC8gdECy3bY83Kzu4oE885MSUHw&usqp=CAU',
-                    'Hailee Steinfield',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuqtaDRLBx_yKZzyQC3a6n4IM5mtCyJDY7yg&usqp=CAU'),
-                buildPost(
-                    context,
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR59iEIA5WZDh69BuW-6_x7RBkxzGj5sjYRlg&usqp=CAU',
-                    'Robert Pattinson',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPkGchCb5t10Tbe0Yi2Y4Xx7q8qF64GBl_A&usqp=CAU'),
-                buildPost(
-                    context,
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwuyS34Y57CjU3CRcPlkqjDGeIonaEeof_w&usqp=CAU',
-                    'Robert Downey Jr',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGoziy6sShhrDyPPgxwggRwvNOo8MUOkU1qw&usqp=CAU'),
-                buildPost(
-                    context,
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROdNhxPfdoj6siOBA9WqJ1P-wP52FUlfGRg&usqp=CAU',
-                    'Taylor Lautner',
-                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuG6vl__j-aGEKeO-AjCAtl-WXhiGu1VSiWQ&usqp=CAU'),
+                BuildPost(
+                    avatarURL:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRz1TtMqcjKZdQyZEgc3dsoH1BEqCnDz63bFg&usqp=CAU',
+                    name: 'Ashley Greene',
+                    postURL:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMFqC4BS9HIFU_4bAOPFRlZhNnWmJviYIBxg&usqp=CAU'),
+                BuildPost(
+                    avatarURL:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1vyjb4h0JC8gdECy3bY83Kzu4oE885MSUHw&usqp=CAU',
+                    name: 'Hailee Steinfield',
+                    postURL:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuqtaDRLBx_yKZzyQC3a6n4IM5mtCyJDY7yg&usqp=CAU'),
+                BuildPost(
+                    avatarURL:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR59iEIA5WZDh69BuW-6_x7RBkxzGj5sjYRlg&usqp=CAU',
+                    name: 'Robert Pattinson',
+                    postURL:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVPkGchCb5t10Tbe0Yi2Y4Xx7q8qF64GBl_A&usqp=CAU'),
+                BuildPost(
+                    avatarURL:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTiwuyS34Y57CjU3CRcPlkqjDGeIonaEeof_w&usqp=CAU',
+                    name: 'Robert Downey Jr',
+                    postURL:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGoziy6sShhrDyPPgxwggRwvNOo8MUOkU1qw&usqp=CAU'),
+                BuildPost(
+                    avatarURL:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTROdNhxPfdoj6siOBA9WqJ1P-wP52FUlfGRg&usqp=CAU',
+                    name: 'Taylor Lautner',
+                    postURL:
+                        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTuG6vl__j-aGEKeO-AjCAtl-WXhiGu1VSiWQ&usqp=CAU'),
               ],
             ),
           )
-        ],
-      ),
-    );
-  }
-
-  Container buildPost(
-      BuildContext context, String avatarURL, String name, String postURL) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 10),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Row(
-                children: [
-                  CircleAvatar(
-                    radius: 15,
-                    backgroundImage: NetworkImage(avatarURL),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      name,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              const Icon(Icons.more_vert)
-            ],
-          ),
-          Stack(
-            children: [
-              Container(
-                height: MediaQuery.of(context).size.width - 50,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                      image: NetworkImage(postURL),
-                      fit: BoxFit.cover,
-                    ),
-                    borderRadius: BorderRadius.circular(30),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withOpacity(0.5),
-                        spreadRadius: 2,
-                        blurRadius: 30,
-                        offset: const Offset(0, 10),
-                      ),
-                    ]),
-              ),
-              Positioned(
-                bottom: 15,
-                right: 15,
-                child: Icon(
-                  Icons.favorite,
-                  size: 30,
-                  color: Colors.white.withOpacity(0.7),
-                ),
-              )
-            ],
-          ),
         ],
       ),
     );
@@ -178,6 +130,98 @@ class _HomeState extends State<Home> {
       child: CircleAvatar(
         radius: 20,
         backgroundImage: NetworkImage(url),
+      ),
+    );
+  }
+}
+
+// ignore: must_be_immutable
+class BuildPost extends StatefulWidget {
+  String name, avatarURL, postURL;
+
+  BuildPost({
+    Key? key,
+    required this.name,
+    required this.avatarURL,
+    required this.postURL,
+  }) : super(key: key);
+
+  @override
+  State<BuildPost> createState() => _BuildPostState();
+}
+
+class _BuildPostState extends State<BuildPost> {
+  bool color = false;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onDoubleTap: () {
+        setState(() {
+          color = !color;
+        });
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(vertical: 10),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    CircleAvatar(
+                      radius: 15,
+                      backgroundImage: NetworkImage(widget.avatarURL),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        widget.name,
+                        style: const TextStyle(
+                          fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+                const Icon(Icons.more_vert)
+              ],
+            ),
+            Stack(
+              children: [
+                Container(
+                  height: MediaQuery.of(context).size.width - 50,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                        image: NetworkImage(widget.postURL),
+                        fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.circular(30),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.black.withOpacity(0.5),
+                          spreadRadius: 2,
+                          blurRadius: 30,
+                          offset: const Offset(0, 10),
+                        ),
+                      ]),
+                ),
+                Positioned(
+                  bottom: 15,
+                  right: 15,
+                  child: Icon(
+                    Icons.favorite,
+                    size: 30,
+                    color: !color
+                        ? Colors.white.withOpacity(0.7)
+                        : Colors.redAccent,
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

@@ -1,10 +1,12 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'screens/register_screen.dart';
 import 'screens/register_screen_02.dart';
 import 'screens/home_screen.dart';
+import 'package:flutter/services.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
   runApp(const MyApp());
 }
 
@@ -21,7 +23,7 @@ class MyApp extends StatelessWidget {
       ),
       home: const Login(),
       debugShowCheckedModeBanner: false,
-      scrollBehavior: ScrollConfiguration.of(context).copyWith(dragDevices: {PointerDeviceKind.mouse}),
+      // scrollBehavior: ScrollConfiguration.of(context).copyWith(dragDevices: {PointerDeviceKind.mouse}),
     );
   }
 }
@@ -64,7 +66,7 @@ class Login extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder:((context) => HomePage()),
+                  builder: ((context) => HomePage()),
                 ),
               );
             }),

@@ -46,10 +46,14 @@ class _UserProfileState extends State<UserProfile> {
                   radius: 60,
                 ),
               ),
-              Positioned(
+              const Positioned(
                 right: 10,
                 top: 10,
-                child: Icon(Icons.edit,size: 30,color: Colors.black87,),
+                child: Icon(
+                  Icons.edit,
+                  size: 30,
+                  color: Colors.black87,
+                ),
               )
             ],
           ),
@@ -87,6 +91,7 @@ class _UserProfileState extends State<UserProfile> {
             child: Container(
               decoration: BoxDecoration(color: Colors.grey.withOpacity(0.2)),
               child: GridView.count(
+                padding: EdgeInsets.zero,
                 crossAxisSpacing: 5,
                 mainAxisSpacing: 5,
                 childAspectRatio: .8,
