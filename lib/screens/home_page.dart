@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:like_button/like_button.dart';
 
 class Home extends StatefulWidget {
   Home({Key? key}) : super(key: key);
@@ -151,14 +152,15 @@ class BuildPost extends StatefulWidget {
 }
 
 class _BuildPostState extends State<BuildPost> {
-  bool color = false;
+  bool isLiked = false;
+  final likekey = GlobalKey<LikeButtonState>();
+  final animation = const Duration(milliseconds: 15000);
   @override
   Widget build(BuildContext context) {
+    const animation = Duration(milliseconds: 1500);
     return GestureDetector(
       onDoubleTap: () {
-        setState(() {
-          color = !color;
-        });
+        likekey.currentState!.onTap();
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 10),
@@ -210,12 +212,26 @@ class _BuildPostState extends State<BuildPost> {
                 Positioned(
                   bottom: 15,
                   right: 15,
-                  child: Icon(
-                    Icons.favorite,
+                  child: LikeButton(
+                    key: likekey,
+                    isLiked: isLiked,
+                    animationDuration: animation,
                     size: 30,
-                    color: !color
-                        ? Colors.white.withOpacity(0.7)
-                        : Colors.redAccent,
+                    likeBuilder: (isLiked) {
+                      final color = isLiked ? Colors.red : Colors.grey;
+                      return Icon(
+                        Icons.favorite,
+                        color: color,
+                        size: 30,
+                      );
+                    },
+                    onTap: ((isLiked) async {
+                      this.isLiked = !isLiked;
+
+                      Future.delayed(animation)
+                          .then((value) => setState(() {}));
+                      return !isLiked;
+                    }),
                   ),
                 )
               ],
