@@ -26,6 +26,7 @@ class _NotificationsState extends State<Notifications> {
           ),
           Expanded(
             child: ListView(
+              padding: EdgeInsets.zero,
               children: [
                 buildNotification(
                   'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1Z0lP5xaKzQAFk-6vw-Vf_RWa2VNgqpKRPw&usqp=CAU',

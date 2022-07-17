@@ -24,9 +24,16 @@ class _FindFriendsState extends State<FindFriends> {
       ),
       body: Column(
         children: [
-          Text("Recent Searches"),
+          const Text(
+            "Recent Searches",
+            style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+                color: Color.fromARGB(255, 45, 74, 238)),
+          ),
           Expanded(
             child: ListView(
+              padding: EdgeInsets.zero,
               children: [
                 recentSearches(
                     'https://m.media-amazon.com/images/M/MV5BNWJlMGI5NzAtMmQ2MC00OWI5LWE3ZTItYzViNWE3ZGMwZjljXkEyXkFqcGdeQXVyMjQwMDg0Ng@@._V1_.jpg',

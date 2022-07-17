@@ -65,9 +65,10 @@ class _ChatBoxState extends State<ChatBox> {
           ),
           Expanded(
             child: ListView.separated(
+              padding: EdgeInsets.zero,
               itemCount: _name.length,
               separatorBuilder: (BuildContext context, int index) {
-                return Divider(
+                return const Divider(
                   height: 4,
                 );
               },
