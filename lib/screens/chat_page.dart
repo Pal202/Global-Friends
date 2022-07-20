@@ -84,7 +84,7 @@ class _ChatBoxState extends State<ChatBox> {
           ),
           Expanded(
             child: AnimatedList(
-              physics: BouncingScrollPhysics(),
+              physics: const BouncingScrollPhysics(),
               key: listKey,
               padding: EdgeInsets.zero,
               initialItemCount: _chatItem.length,
