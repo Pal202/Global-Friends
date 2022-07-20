@@ -47,6 +47,25 @@ class _ChatBoxState extends State<ChatBox> {
     'Do have orange slices?',
     'I belong to no one.',
   ];
+  final GlobalKey<AnimatedListState> listKey = GlobalKey<AnimatedListState>();
+  List<ListTile> _chatItem = [];
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      addChatItems();
+    });
+  }
+
+  Future<void> addChatItems() async {
+    for (int i = 0; i < _name.length; i++) {
+      _chatItem.add(_buildChatItem(i));
+      listKey.currentState
+          ?.insertItem(i, duration: const Duration(milliseconds: 500));
+      await Future.delayed(const Duration(milliseconds: 200));
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -64,40 +83,51 @@ class _ChatBoxState extends State<ChatBox> {
             ),
           ),
           Expanded(
-            child: ListView.separated(
+            child: AnimatedList(
+              physics: BouncingScrollPhysics(),
+              key: listKey,
               padding: EdgeInsets.zero,
-              itemCount: _name.length,
-              separatorBuilder: (BuildContext context, int index) {
-                return const Divider(
-                  height: 4,
-                );
-              },
-              itemBuilder: (BuildContext context, int index) {
-                return ListTile(
-                  contentPadding: const EdgeInsets.only(right: 10),
-                  leading: Container(
-                    width: 60,
-                    height: 60,
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: NetworkImage(_avatar[index]),
-                      ),
-                    ),
-                  ),
-                  title: Text(
-                    _name[index],
-                    style: const TextStyle(fontWeight: FontWeight.w500),
-                  ),
-                  subtitle: Text(_message[index]),
-                  trailing: Icon(Icons.call),
+              initialItemCount: _chatItem.length,
+              itemBuilder: (BuildContext context, int index, animation) {
+                // return SlideTransition(
+                //   position:
+                //       Tween(begin: const Offset(1, 0), end: const Offset(0, 0))
+                //           .animate(CurvedAnimation(
+                //               parent: animation, curve: Curves.decelerate)),
+                //   child: _chatItem[index],
+                // );
+                return SizeTransition(
+                  sizeFactor: animation,
+                  child: _chatItem[index],
                 );
               },
             ),
           )
         ],
       ),
+    );
+  }
+
+  ListTile _buildChatItem(int index) {
+    return ListTile(
+      contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+      leading: Container(
+        width: 60,
+        height: 60,
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          image: DecorationImage(
+            fit: BoxFit.cover,
+            image: NetworkImage(_avatar[index]),
+          ),
+        ),
+      ),
+      title: Text(
+        _name[index],
+        style: const TextStyle(fontWeight: FontWeight.w500),
+      ),
+      subtitle: Text(_message[index]),
+      trailing: const Icon(Icons.call),
     );
   }
 }
